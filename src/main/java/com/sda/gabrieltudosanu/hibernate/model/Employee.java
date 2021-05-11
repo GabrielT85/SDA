@@ -80,4 +80,19 @@ public class Employee {
     public void setManagerId(Integer managerId) {
         this.managerId = managerId;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeId=" + employeeId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", salary=" + salary +
+                ", departmentId=" + departmentId +
+                ", managerId=" + managerId +
+                '}';
+    }
 }

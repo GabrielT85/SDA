@@ -6,10 +6,11 @@ import javax.persistence.*;
 
 public class Department {
 
-        @Id
+        @Id //primary key
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "id") // optional - identical names
         private Integer id;
+
         @Column(name = "name") // optional - identical names
         private String name;
         public Integer getId()
@@ -28,7 +29,15 @@ public class Department {
         {
             this.name = name;
         }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
+}
 
 
 
