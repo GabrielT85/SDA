@@ -1,7 +1,10 @@
 package com.sda.gabrieltudosanu.hibernate.model;
 
-import com.sun.jmx.snmp.SnmpUnknownAccContrModelException;
 import javax.persistence.*;
+import java.sql.Date;
+import java.util.Collection;
+
+//TODO to make a review of the entire class
 
 @Entity
 @Table(name="employees")
@@ -12,26 +15,32 @@ public class Employee {
     private Integer employeeId;
     @Column(name="firstName")
     private String firstName;
-    @Column(name="lastName")
+    @Column(name = "lastName")
     private String lastName;
-    @Column(name="dateOfBirth")
-    private java.sql.Date dateOfBirth;
-    @Column(name="phoneNumber")
+    @Column(name = "dateOfBirth")
+    private Date dateOfBirth;
+    @Column(name = "phoneNumber")
     private String phoneNumber;
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
-    @Column(name="salary")
+    @Column(name = "salary")
     private Integer salary;
-    @Column(name="departmentId")
-    private Integer departmentId;
-    @Column(name="managerId")
-    private Integer managerId;
+    @OneToOne
+    @JoinColumn(name = "account_id") //account id este din baza de date
+    private Account account;
+    @ManyToOne
+    @JoinColumn(name = "departmentId")
+    private Department department;
+    private Collection<Project> projects;
+
     public Integer getEmployeeId() {
         return employeeId;
     }
+
     public void setEmployeeId(Integer employeeId) {
         this.employeeId = employeeId;
     }
+
     public String getFirstName() {
         return firstName;
     }
@@ -44,10 +53,10 @@ public class Employee {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public java.sql.Date getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
-    public void setDateOfBirth(java.sql.Date dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
     public String getPhoneNumber() {
@@ -59,26 +68,33 @@ public class Employee {
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
+
     public Integer getSalary() {
         return salary;
     }
+
     public void setSalary(Integer salary) {
         this.salary = salary;
     }
-    public Integer getDepartmentId() {
-        return departmentId;
+
+    public Account getAccount() {
+        return account;
     }
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
-    public Integer getManagerId() {
-        return managerId;
+
+    public Department getDepartment() {
+        return department;
     }
-    public void setManagerId(Integer managerId) {
-        this.managerId = managerId;
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     @Override
@@ -91,8 +107,17 @@ public class Employee {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", salary=" + salary +
-                ", departmentId=" + departmentId +
-                ", managerId=" + managerId +
+                ", account=" + account +
                 '}';
+    }
+
+    public Collection<Project> getProjects() {
+        Collection<Project> projects = null;
+        return projects;
+    }
+
+
+    public void setProjects(Collection<Project> projects) {
+        this.projects = projects;
     }
 }

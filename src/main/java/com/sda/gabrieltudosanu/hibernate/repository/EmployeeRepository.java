@@ -2,11 +2,12 @@ package com.sda.gabrieltudosanu.hibernate.repository;
 
 import com.sda.gabrieltudosanu.hibernate.model.Employee;
 import com.sda.gabrieltudosanu.hibernate.utils.SessionManager;
+import com.sda.gabrieltudosanu.hibernate.model.Account;
+import com.sda.gabrieltudosanu.hibernate.model.Department;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
-public class EmployeeRepository
-{
+public class EmployeeRepository {
     public Employee findById(Integer id)
     {
         Session session = SessionManager.getSessionFactory().openSession();
@@ -15,14 +16,31 @@ public class EmployeeRepository
         session.close();
         return employee;
     }
-    public void save(Employee employee)
+    public void save(Employee employee, Account account)
     {
         Session session= SessionManager.getSessionFactory().openSession();
         Transaction transaction= session.beginTransaction();
-        session.save(employee);
+        session.save(account);//am adaugat accountul in baza de date si se genereaza in ID pt account
+        employee.setAccount(account);//setam accountul pe employee
+        session.save(employee);//adaugam employee in baza de date
         transaction.commit();
         session.close();
     }
-    //TODO delete & update
-}
 
+    public void delete(Employee employee){
+        Session session = SessionManager.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        session.delete(employee);
+        transaction.commit();
+        session.close();
+    }
+
+
+    public void update(Employee employee){
+        Session session = SessionManager.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        session.update(employee);
+        transaction.commit();
+        session.close();
+    }
+}
