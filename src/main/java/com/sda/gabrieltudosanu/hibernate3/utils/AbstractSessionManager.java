@@ -1,11 +1,13 @@
-package com.sda.gabrieltudosanu.hibernate.utils;
+package com.sda.gabrieltudosanu.hibernate3.utils;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
+
 import java.util.Properties;
+
 public abstract class AbstractSessionManager
 {
     private static final String DATABASE_DRIVER = "com.mysql.jdbc.Driver";

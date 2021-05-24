@@ -4,8 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
 
-//TODO to make a review of the entire class
-
+//TODO make a review of the entire class (variable projects missing)
 @Entity
 @Table(name="employees")
 public class Employee {

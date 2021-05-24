@@ -1,2 +1,4 @@
-package com.sda.gabrieltudosanu.hibernate3.repository;public class SeatRepository {
+package com.sda.gabrieltudosanu.hibernate3.repository;
+
+public class SeatRepository {
 }

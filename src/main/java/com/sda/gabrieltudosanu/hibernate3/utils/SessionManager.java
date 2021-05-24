@@ -1,9 +1,8 @@
-package com.sda.gabrieltudosanu.hibernate.utils;
+package com.sda.gabrieltudosanu.hibernate3.utils;
 
-import com.sda.gabrieltudosanu.hibernate.model.Account;
-import com.sda.gabrieltudosanu.hibernate.model.Department;
-import com.sda.gabrieltudosanu.hibernate.model.Employee;
-import com.sda.gabrieltudosanu.hibernate.model.Project;
+import com.sda.gabrieltudosanu.hibernate3.model.Client;
+import com.sda.gabrieltudosanu.hibernate3.model.Reservation;
+import com.sda.gabrieltudosanu.hibernate3.model.Seat;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -19,19 +18,18 @@ public class SessionManager extends AbstractSessionManager {
     }
 
     public static SessionFactory getSessionFactory() {
-        return INSTANCE.getSessionFactory("HumanResources");
+        return INSTANCE.getSessionFactory("CinemaSDA");
     }
 
     @Override
     protected void setAnnotatedClasses(Configuration configuration) {
 
-        configuration.addAnnotatedClass(Department.class);
-        configuration.addAnnotatedClass(Employee.class);
-        configuration.addAnnotatedClass(Project.class);
-        configuration.addAnnotatedClass(Account.class);
+        configuration.addAnnotatedClass(Client.class);
+        configuration.addAnnotatedClass(Reservation.class);
+        configuration.addAnnotatedClass(Seat.class);
 
+    //TODO de trecut clasele din acest proiect
 
     }
-
 
 }
